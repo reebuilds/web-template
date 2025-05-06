@@ -51,12 +51,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const config = {
       headers: {
         'Content-Type': 'application/json',
-      },
+        Authorization: token ? `Bearer ${token}` : undefined
+      } as Record<string, string | undefined>,
     };
-
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
 
     return config;
   };
